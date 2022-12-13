@@ -1,15 +1,22 @@
 import React from "react";
 import Link from "next/link";
+import { IProducts } from "../model";
+import CardComponent from "../components/Card";
 
-//fetch("https://fakestoreapi.com/products")
-const Home = ({ products }) => {
+interface HomeProps {
+  products: IProducts[]
+}
+
+const Home = ({ products }: HomeProps) => {
   return (
     <div>
+      
       {products.map((product) => {
         return (
           <>
-            <h1>{product.title}</h1>
+            <CardComponent image={product.image} title={product.title} description={product.description} id={product.id}/>
             <Link href={String(product.id)}>details</Link>
+            
           </>
         );
       })}
